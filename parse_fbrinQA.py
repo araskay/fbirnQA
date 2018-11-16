@@ -53,7 +53,7 @@ subjects=workflow.getsubjects(subjectsfile)
 f=open(outputfile,'w')
 
 # write csv header
-f.write('Session')
+f.write('sessionID')
 for field in qa_fields:
     f.write(',')
     f.write(field)
@@ -64,16 +64,20 @@ for subj in subjects:
         for run in sess.runs:
             (directory,namebase)=os.path.split(run.data.bold)
             namebase=fileutils.removext(namebase)
-            d = parse_xml(run.data.qa)
-            # write data to csv file
-            f.write(namebase)
-            for field in qa_fields:
-                if field in d.keys():
-                    f.write(',')
-                    f.write(d[field])
-                else:
-                    f.write(',')
-            f.write('\n')
+            if os.path.exists(run.data.qa):
+                print(namebase)
+                d = parse_xml(run.data.qa)
+                # write data to csv file
+                f.write(namebase)
+                for field in qa_fields:
+                    if (field in d.keys()) and (d[field] is not None):
+                        f.write(',')
+                        f.write(d[field])
+                    else:
+                        f.write(',')
+                f.write('\n')
+            else:
+                print(namebase,'(ERROR) QA file does not exists. Moving on.')
             
 f.close()
             
