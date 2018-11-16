@@ -8,6 +8,7 @@ Created on Mon Nov  5 16:28:15 2018
 
 import getopt, sys, subprocess, os
 import workflow, fileutils
+import xml.etree.ElementTree as et
 
 def printhelp():
     print('Usage: run_fbrinQA.py --subjects <input subjects file> [--outputsubjects <output subjects file>]')
@@ -48,8 +49,16 @@ for subj in subjects:
             namebase=fileutils.removext(namebase)
             opath=os.path.abspath(run.data.opath) # just to remove possible end slash (/) for consistency
             # wrap nifti image
-            p=subprocess.Popen(['analyze2bxh','--xcede',fileutils.addniigzext(run.data.bold),fileutils.removext(run.data.bold)+'_wrapped.xml'])
+            p=subprocess.Popen(['analyze2xcede',fileutils.addniigzext(run.data.bold),fileutils.removext(run.data.bold)+'_wrapped.xml']) # do not use analyze2bxh --xcede
             p.communicate()
+            # nifti files do not contain frequencydirection in the header. add this info to the xml file. needed to calculate ghost measures
+            tree = et.parse(fileutils.removext(run.data.bold)+'_wrapped.xml')
+            root = tree.getroot()
+            acq = root.find('{http://nbirn.net/Resources/Users/Applications/xcede/}acqProtocol')
+            freqdim = et.Element('{http://nbirn.net/Resources/Users/Applications/xcede/}acqParam',{'name': 'frequencydirection', 'type': 'integer'})
+            freqdim.text='1'
+            acq.append(freqdim)
+            tree.write(fileutils.removext(run.data.bold)+'_wrapped.xml')
             # run fbrin QA pipeline on the wrapped image
             # the fbirn pipeline has very specific requirements in terms of the output directory:
             # the directory should not exists,

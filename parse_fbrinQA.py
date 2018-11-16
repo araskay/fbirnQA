@@ -46,7 +46,7 @@ if subjectsfile=='' or outputfile=='':
     sys.exit()
 
 
-qa_fields=['origdimensions', 'origspacing', 'origgap', 'slice', 'timepoints', 'roiSize', 'scanner', 'psdname', 'diffimagefile', 'meanimagefile', 'stdimagefile', 'sfnrimagefile', 'mean', 'SNR', 'SFNR', 'std', 'percentFluc', 'drift', 'driftfit', 'rdc', 'minCMassX', 'minCMassY', 'minCMassZ', 'maxCMassX', 'maxCMassY', 'maxCMassZ', 'meanCMassX', 'meanCMassY', 'meanCMassZ', 'dispCMassX', 'dispCMassY', 'dispCMassZ', 'driftCMassX', 'driftCMassY', 'driftCMassZ', 'minFWHMX', 'minFWHMY', 'minFWHMZ', 'maxFWHMX', 'maxFWHMY', 'maxFWHMZ', 'meanFWHMX', 'meanFWHMY', 'meanFWHMZ']
+qa_fields=['origdimensions', 'origspacing', 'origgap', 'slice', 'timepoints', 'roiSize', 'scanner', 'psdname', 'diffimagefile', 'meanimagefile', 'stdimagefile', 'sfnrimagefile', 'mean', 'SNR', 'SFNR', 'std', 'percentFluc', 'drift', 'driftfit', 'rdc', 'minCMassX', 'minCMassY', 'minCMassZ', 'maxCMassX', 'maxCMassY', 'maxCMassZ', 'meanCMassX', 'meanCMassY', 'meanCMassZ', 'dispCMassX', 'dispCMassY', 'dispCMassZ', 'driftCMassX', 'driftCMassY', 'driftCMassZ', 'minFWHMX', 'minFWHMY', 'minFWHMZ', 'maxFWHMX', 'maxFWHMY', 'maxFWHMZ', 'meanFWHMX', 'meanFWHMY', 'meanFWHMZ','meanGhost','meanBrightGhost']
 
 subjects=workflow.getsubjects(subjectsfile)
 
