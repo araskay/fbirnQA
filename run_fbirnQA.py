@@ -11,6 +11,9 @@ import workflow, fileutils
 import xml.etree.ElementTree as et
 
 def printhelp():
+    print('Runs the fBIRN QA pipeline on a fMRI data set.')
+    print('Input data are read from a fMRI subjects file.')
+    print('Output data are save to a fMRI subjects file.')
     print('Usage: run_fbrinQA.py --subjects <input subjects file> [--outputsubjects <output subjects file>]')
     
 subjectsfile=''

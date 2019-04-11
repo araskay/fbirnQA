@@ -20,6 +20,7 @@ def parse_xml(xmlfile):
     return(d)
    
 def printhelp():
+    print('Parse the output of the fBIRN QA pipeline into a CSV file.')
     print('Usage: parse_fbrinQA.py --subjects <input subjects file> --output <output csv file>')
 
 subjectsfile=''

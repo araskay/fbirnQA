@@ -5,6 +5,8 @@ import sys,getopt,subprocess,os
 import workflow
 
 def printhelp():
+    print('Run multiple instances of the fBIRN QA pipeline in parallel '+
+    'on a local machine with multiple CPU cores.')
     p=subprocess.Popen(['run_fbirnQA.py','-h'])
     p.communicate()
     print('---------------------------------')
