@@ -30,3 +30,5 @@ Clone or download this repository to a directory of your choice. Make sure all t
 
 ## Author
 [Aras Kayvanrad](https://www.linkedin.com/in/kayvanrad/)
+
+**Related repos:** [fmri_pipeline](https://github.com/kayvanrad/fmri_pipeline), [acf](https://github.com/kayvanrad/acf), [phantomQA](https://github.com/kayvanrad/phantomQA)
